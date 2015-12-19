@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.baiwang.com.cn/baiwanginvoiceext"
+            xmlns:bw="http://www.baiwang.com.cn/baiwanginvoiceext"
+            xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+                schemaLocation="UBL-CommonExtensionComponents-2.1.xsd"/>
+
+    <xsd:element name="BaiwangExtensionContent" type="bw:BaiwangExtensionContentType">
+    </xsd:element>
+
+    <xsd:complexType name="BaiwangExtensionContentType">
+        <xsd:complexContent>
+            <xsd:extension base="ext:ExtensionContentType">
+                <xsd:sequence>
+                    <xsd:element name="InvoiceIssueReqSeqNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="InvoiceIssueDeviceIdentifier" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="InvoiceCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="CryptoCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="CheckCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="QRCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="ReviewerName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="OriginalInvoiceCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="OriginalInvoiceNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="KeyPairList" type="bw:KeyPairListType" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="KeyPairListType">
+        <xsd:sequence>
+            <xsd:element name="KeyPair" type="bw:KeyPairType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="KeyPairType">
+        <xsd:sequence>
+            <xsd:element name="key" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
